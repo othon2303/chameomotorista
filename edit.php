@@ -14,6 +14,7 @@
   <a class="navbar-brand" href="#">
 	<img src="../../../logo.png" width="27" height="35" alt="" class="rounded-circle">
   CHAME O MOTORISTA </a>
+  <a href="../../../read.php" class="btn btn-success btn-lg" role="button" aria-disabled="true">VOLTAR</a>
     
 </nav>
 <!-- FINAL MENU -->
@@ -36,7 +37,7 @@ include "conexao.php";
 
 		// write the update query
 		$sql = "UPDATE `trips` SET `status_cupom`='$status_cupom',`usado_onde`='$usado_onde' WHERE `iTripId`='$iTripId'";
-
+     
 		// execute the query
 		$result = $conn->query($sql);
 
@@ -45,6 +46,7 @@ include "conexao.php";
 		}else{
 			echo "Error:" . $sql . "<br>" . $conn->error;
 		}
+
 	}
     
 
@@ -71,20 +73,20 @@ if (isset($_GET['id'])) {
 
     <div class="container">
 	<div class="row">
-    <h1>CUPOM - <?=htmlspecialchars($user['vRideNo'])?></h1></a> 
+    <h1>CUPOM - <?php echo $vRideNo; ?></h1>
     </div>
     <div class="row flex-center">
         <div class="form-control">
             <form action="" method="post">
 		    <fieldset>
             <div class="form-group">
-		    <label>STATUS DO CUPOM</label>
+		    <label>STATUS DO CUPOM</label><br>
 		    <input type="text" name="status_cupom" value="<?php echo $status_cupom; ?>">
-            <div class="form-group">
-            <label>CUPOM USADO ONDE?</label>
-		    <input type="hidden" name="usado_onde" value="<?php echo $usado_onde; ?>">
+            <div class="form-group"><br>
+            <label>CUPOM USADO ONDE?</label><br>
+		    <input type="text" name="usado_onde" value="<?php echo $usado_onde; ?>">
             </div>
-		    <input class="btn btn-primary btn-lg" type="submit" value="Update" name="update">
+		    <input class="btn btn-primary btn-lg" type="submit" value="Salvar" name="update">
 		  </fieldset>
 		    </form>
         </div>
